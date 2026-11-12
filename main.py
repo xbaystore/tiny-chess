@@ -66,7 +66,7 @@ def qs(S,a,b,pl):
  if ND[0]>CAP:raise X
  st=ev(S)*S[1]
  if st>=b:return st
- a=max(a,st);bs=a;ms=[m for m in lm(S)if S[0][(t:=(m>>7)&127)]or t==S[2]]
+ a=max(a,st);bs=a;ms=[m for m in lm(S)if S[0][(t:=(m>>7)&127)]or t==S[3]]
  ms.sort(key=lambda m:-msc(S,m))
  for m in ms:
   s=-qs(mk(S,m),-b,-a,pl+1)
@@ -75,7 +75,7 @@ def qs(S,a,b,pl):
  return bs
 def msc(S,m):
  B=S[0];t=(m>>7)&127;pr=(m>>14)&7;c=B[t]
- if c:return 1000000+V[abs(c)]*16-abs(B[m&127])
+ if c:return 1000000+V[abs(c)]*16-V[abs(B[m&127])]//16
  if pr:return 900000+V[pr]
  return 0
 def sr(S,d,a,b,pl):
